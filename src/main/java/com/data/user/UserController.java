@@ -1,5 +1,6 @@
 package com.data.user;
 
+import com.data.exception.BadRequestException;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ public class UserController {
         if (name.equals("admin") && password.equals("T@123456")) {
             return "admin";
         } else {
-            return "";
+            throw new BadRequestException("登陆失败,请检查用户名或密码是否正确");
         }
     }
 
